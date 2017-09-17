@@ -47,7 +47,8 @@ motorControl(serialValue, lanzadorNumber); // recibe el valor pwm de 0 a 100 y t
 void motorControl (int serialValue, char lanzadorNumber)
 {
   int speed;
-  switch (serialValue){
+  switch (serialValue)
+  {
     case 1: speed = 70; break;
     case 2: speed = 140; break;
     case 3: speed = 210; break;
@@ -59,59 +60,44 @@ void motorControl (int serialValue, char lanzadorNumber)
   if (lanzadorNumber == "a")
   {
 // +++++++ INICIO AVANCE DE MOTOR L1
-    digitalWrite(lockA1, HIGH);
-    digitalWrite(lockA2, HIGH);
-    delay(3000);
-    digitalWrite(lockA1, LOW);
-    digitalWrite(lockA2, LOW);
-    delay(500);
+   
+    unlocker(lockA1,lockA2,3000);
 // ++++++++++ INICIO REGRESO DE MOTOR L1
-    digitalWrite(lockA3, HIGH);
-    digitalWrite(lockA4, HIGH);
-    delay(3000);
-    digitalWrite(lockA3, LOW);
-    digitalWrite(lockA4, LOW);
+   
+    unlocker(lockA3,lockA4,3000);
 // +++++++ INICIO AVANCE DE MOTOR L2
-    digitalWrite(lockB1, HIGH);
-    digitalWrite(lockB2, HIGH);
-    delay(3000);
-    digitalWrite(lockB1, LOW);
-    digitalWrite(lockB2, LOW);
-    delay(500);
+    
+    unlocker(lockB1,lockB2,3000);
 // ++++++++++ INICIO REGRESO DE MOTOR L2
-    digitalWrite(lockB3, HIGH);
-    digitalWrite(lockB4, HIGH);
-    delay(3000);
-    digitalWrite(lockB3, LOW);
-    digitalWrite(lockB4, LOW);
+    
+    unlocker(lockB3,lockB4,3000);
   }
   if (lanzadorNumber == "b")
   {
-// +++++++ INICIO AVANCE DE MOTOR L3
-    digitalWrite(lockC1, HIGH);
-    digitalWrite(lockC2, HIGH);
-    delay(3000);
-    digitalWrite(lockC1, LOW);
-    digitalWrite(lockC2, LOW);
-    delay(500);
-// ++++++++++ INICIO REGRESO DE MOTOR L3
-    digitalWrite(lockC3, HIGH);
-    digitalWrite(lockC4, HIGH);
-    delay(3000);
-    digitalWrite(lockC3, LOW);
-    digitalWrite(lockC4, LOW);
-// +++++++ INICIO AVANCE DE MOTOR L4
-    digitalWrite(lockC1, HIGH);
-    digitalWrite(lockC2, HIGH);
-    delay(3000);
-    digitalWrite(lockC1, LOW);
-    digitalWrite(lockC2, LOW);
-    delay(500);
-// ++++++++++ INICIO REGRESO DE MOTOR L4
-    digitalWrite(lockC3, HIGH);
-    digitalWrite(lockC4, HIGH);
-    delay(3000);
-    digitalWrite(lockC3, LOW);
-    digitalWrite(lockC4, LOW);
+
+// +++++++ INICIO AVANCE DE MOTOR L1
+   
+    unlocker(lockC1,lockC2,3000);
+// ++++++++++ INICIO REGRESO DE MOTOR L1
+   
+    unlocker(lockC3,lockC4,3000);
+// +++++++ INICIO AVANCE DE MOTOR L2
+    
+    unlocker(lockD1,lockD2,3000);
+// ++++++++++ INICIO REGRESO DE MOTOR L2
+    
+    unlocker(lockD3,lockD4,3000);
+
   }
 }
+
+void unlocker(int motor1,int motor2, int time)
+{
+    digitalWrite(motor1, HIGH);// ABRE CAMINO DE PUENTE H
+    digitalWrite(motor2, HIGH);
+    delay(time);// PERMITE GIRAR AL MOTOR SEGUN EL CAMINO DE PUENTE H
+    digitalWrite(motor1, LOW);
+    digitalWrite(motor2, LOW);
+    delay(500);
+}
+
