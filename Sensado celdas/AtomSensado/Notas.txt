@@ -1,0 +1,4 @@
+# revisar tiempo de comunicacion entre sensores, mando central, y luces 
+# los dos arduinos sensadores leen celdas y envian el 1 un valor entre 1 y 32 y el 2 un valor entre 33 y 64
+# asi se conoce quien envio la celda y si es 00 se descarta ese valor 
+# ! ademas se puede esperar ese 00 para que las celdas se detengan 
