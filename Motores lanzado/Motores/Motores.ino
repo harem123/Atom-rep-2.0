@@ -13,7 +13,7 @@
 // pwm pins 2 to 13 and 44 to 46
 
 // ++++++++++ variables de motores  
-const int m1 = 2, m2=3;
+const int m1 = 5, m2=6;
 const int lockA1 = 22,lockA2 = 23,lockA3 = 24,lockA4 = 25; // PINES MOTORES LOCK LANZADOR 1
 const int lockB1 = 26,lockB2 = 27,lockB3 = 28,lockB4 = 29; // PINES MOTORES LOCK LANZADOR 1
 const int lockC1 = 30,lockC2 = 31,lockC3 = 32,lockC4 = 33; // PINES MOTORES LOCK LANZADOR 2
@@ -36,7 +36,7 @@ void setup()
 void loop() 
 {
   
-int serialValue= 1; 
+char serialValue= "l"; 
 char lanzadorNumber = "a";   
 motorControl(serialValue, lanzadorNumber); // recibe el valor pwm de 0 a 100 y tiro alto o bajo 
     
