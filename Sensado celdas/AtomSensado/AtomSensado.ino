@@ -66,7 +66,11 @@ void loop()
                 if (digitalRead(myPins[i]) == HIGH)
                 {
                   sN = i;
-                  Serial.println(sN);
+                  digitalWrite(Led_2, LOW);
+                  Serial.print("C");
+                  Serial.print(sN);
+                  Serial.print("#");  
+                  i=4;// cambia el estado para salir rapido del for 
                   flag = false;
                 }
               }
@@ -74,15 +78,13 @@ void loop()
               
             }         
             delay(500);
-            digitalWrite(Led_2, LOW);
-            Serial.println("C");
-            Serial.println(sN);
-            Serial.println("#");         
+                   
           }       
       }
       StringCompleta = false;
       BufferIn = "";
-  } 
+  }
+  else{StringCompleta = false;} 
 } 
 
 void serialEvent() {
