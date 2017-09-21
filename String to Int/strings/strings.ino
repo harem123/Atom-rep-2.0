@@ -1,9 +1,6 @@
 const int En_WrRd_RS485 =  2;
-
 const int Led_1 =  13; 
-const int Led_2 =  3; 
-const int Led_3 =  4;  
-
+ 
 char VarChar = ' ';
 String BufferIn = "";  
 String NumIn = "";      
@@ -11,19 +8,14 @@ boolean StringCompleta = false;
 
 void setup() 
 { 
-  Serial.begin(9600);
-  BufferIn.reserve(5);  
-    
+  Serial.begin(9600);// inicio serial a 9600 bauds
+  BufferIn.reserve(5); // reservo al menos 5 bytes para el buffer
+
   pinMode(En_WrRd_RS485, OUTPUT);
-  
-  pinMode(Led_1, OUTPUT);
-  pinMode(Led_2, OUTPUT);
-  pinMode(Led_3, OUTPUT);
-  
+  pinMode(Led_1, OUTPUT); 
   digitalWrite(En_WrRd_RS485, LOW); 
   digitalWrite(Led_1, LOW);
-  digitalWrite(Led_2, LOW);
-  digitalWrite(Led_3, LOW); 
+ 
 } 
  
 void loop() 
@@ -35,11 +27,12 @@ void loop()
       Serial.println(BufferIn);
       Serial.println(NumIn);
       
-      //if ((BufferIn.indexOf('B')) >= 0)
+      
       if ((BufferIn.indexOf('M')) >= 0)
       {
         int serialValue = (NumIn.toInt());
         serialValue += 3;
+
         Serial.print(serialValue);
         StringCompleta = false;
         BufferIn = "";
