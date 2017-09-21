@@ -44,7 +44,7 @@ motorControl(serialValue, lanzadorNumber); // recibe el valor pwm de 0 a 100 y t
  
 }
 
-void motorControl (int serialValue, char lanzadorNumber)
+void motorControl (int serialValue, char lanzadorId)
 {
   int speed;
   switch (serialValue)
@@ -57,7 +57,7 @@ void motorControl (int serialValue, char lanzadorNumber)
   analogWrite(m1,speed);
   analogWrite(m2,speed); 
   //lockA1 = 22,lockA2 = 23,lockA3 = 24,lockA4 = 25;
-  if (lanzadorNumber == "a")
+  if (lanzadorId == "a")
   {
 // +++++++ INICIO AVANCE DE MOTOR L1
    
