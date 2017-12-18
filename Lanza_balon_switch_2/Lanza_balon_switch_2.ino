@@ -2,6 +2,13 @@
 #include <SimpleTimer.h>
 #include <Switch.h> //libreria para uso de pulsadores
 
+// ******************
+
+//falta definir pin 10 como salida pwm 
+// falta definir un pin analogo para tener 2 salidas de pwm 
+
+//****************************
+
 // Inicialización de libreria con los pines lcd
 LiquidCrystal lcd(22, 23, 24, 25, 26, 27);
 
@@ -159,7 +166,7 @@ void inicio_velocidad()
     switch (nivel) {
     case 0:
       //do something when var equals 0
-      analogWrite(10,80);
+      analogWrite(10,90); // aqui añadir analog Write (11,90)
       break;
     case 1:
       //do something when var equals 1
