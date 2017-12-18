@@ -166,15 +166,18 @@ void inicio_velocidad()
     switch (nivel) {
     case 0:
       //do something when var equals 0
-      analogWrite(10,90); // aqui añadir analog Write (11,90)
+      analogWrite(10,90);
+      analogWrite(11,90); // aqui añadir analog Write (11,90)
       break;
     case 1:
       //do something when var equals 1
       analogWrite(10,127);
+      analogWrite(11,127);
       break;
     case 2:
       //do something when var equals 2
       analogWrite(10,200);
+      analogWrite(11,200);
       break;
     default:
       // if nothing else matches, do the default
@@ -188,7 +191,7 @@ void inicio_velocidad()
 void inicio_altura()
 {
   seg = altura - altura_p;
-  if(seg!=0) // faltan corchetes
+  if(seg != 0) // faltan corchetes
     timer.disable(wd_timer_id);
     
   if(B_aceptar == 1 && nivel != -1 && altura != -1)
