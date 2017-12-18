@@ -17,7 +17,7 @@ int altura=-1; //Variable que controla la altura, se inicializa en -1 para coloc
 int B_nivel, B_altura, B_aceptar; //Reciben el valor del boton presionado (1 o 0)
 int seg; //Variable para determinar el cambio de altura
 int altura_p = 0; //Guarda el valor de la altura anterior para determinar el cambio de altura
-int wd_timer_id; //Controla la ejecución del timer de la función simpleTimer
+int wd_timer_id; //Controla la ejecución del timer de la función simpleTimer (watch dog) 
 
 boolean control = false; //Realiza un código de inicio la primera vez que se presiona ejecutar
 long intervalo; //Guarda el tiempo transcurrido entre las veces que se presiona el boton ejecutar para evaluar la posición de altura
@@ -52,8 +52,8 @@ void setup() {
   lcd.print("Altura: ND");
 
   //**Ubica el motor de altura en la posición 0**//
-  digitalWrite (IN3, IN_3); 
-  digitalWrite (IN4, IN_4); 
+  digitalWrite (IN3, IN_3); // inicial in_3 = True
+  digitalWrite (IN4, IN_4); // inicial in_3 = False
   delay(500); 
 }
 
@@ -82,19 +82,21 @@ void loop() {
 }
 
 void apagar()
+// apaga brazo 
 {
     digitalWrite (IN3, LOW);
     digitalWrite (IN4, LOW); 
 }
 
-//La función velocidad coloca la variable nivel en 0, 1, o 2 según la elección del usuario e imprime el valor de velocidad seleccionado
+//La función velocidad coloca la variable nivel en 0, 1, o 2 según la elección del usuario 
+// e imprime el valor de velocidad seleccionado
 void config_velocidad()
 {
   if(B_nivel==1)
   {
     nivel++;
     if(nivel==3)
-      nivel=0;
+       nivel=0;
     lcd.setCursor(11, 0);
     switch (nivel) {
     case 0:
@@ -117,7 +119,8 @@ void config_velocidad()
   }
 }
 
-//La función altura coloca la variable altura en 0, 1, o 2 según la elección del usuario e imprime el valor de altura seleccionado
+//La función altura coloca la variable altura en 0, 1, o 2 según la elección del usuario 
+// e imprime el valor de altura seleccionado
 void config_altura()
 {
   if(B_altura==1)
@@ -164,7 +167,7 @@ void inicio_velocidad()
       break;
     case 2:
       //do something when var equals 2
-      analogWrite(10,254);
+      analogWrite(10,200);
       break;
     default:
       // if nothing else matches, do the default
