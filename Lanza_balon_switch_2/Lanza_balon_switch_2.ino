@@ -160,7 +160,7 @@ void config_altura()
 //**Genera el pwm según la velocidad elegida
 void inicio_velocidad()
 {
-  if(B_aceptar==1 && nivel != -1 && altura != -1)
+  if(B_aceptar == 1 && nivel != -1 && altura != -1)
   {
     //**Genera el pwm según la velocidad elegida
     switch (nivel) {
@@ -187,44 +187,44 @@ void inicio_velocidad()
 //**Controla el tiempo de encendido del motor de altura**//
 void inicio_altura()
 {
-  seg = altura-altura_p;
-  if(seg!=0)
+  seg = altura - altura_p;
+  if(seg!=0) // faltan corchetes
     timer.disable(wd_timer_id);
     
-  if(B_aceptar==1 && nivel != -1 && altura != -1)
+  if(B_aceptar == 1 && nivel != -1 && altura != -1)
   {   
-    if(seg!=0)
+    if(seg != 0)
     {
-      intervalo=millis()-t_previo;
-      t_previo=millis();
-      if(control==false)
+      intervalo = millis() - t_previo;
+      t_previo = millis();
+      if(control == false)
       {
-      intervalo=14000;     
+      intervalo = 14000;     
       control = !control; 
       }
-      if(intervalo>14000)
-        intervalo=14000;
-      if(altura==0) 
+      if(intervalo > 14000)
+        intervalo = 14000;
+      if(altura == 0) 
       {
-        IN_3=true;
-        IN_4=false;
+        IN_3= true;
+        IN_4= false;
         digitalWrite (IN3, IN_3);
         digitalWrite (IN4, IN_4);
-		wd_timer_id=timer.setTimeout(14000, apagar);
+		    wd_timer_id=timer.setTimeout(14000, apagar);
         timer.enable(wd_timer_id);
       }
       if(altura==2)
       {
-        IN_3=false;
-        IN_4=true;
+        IN_3= false;
+        IN_4= true;
         digitalWrite (IN3, IN_3);
         digitalWrite (IN4, IN_4);
         wd_timer_id=timer.setTimeout(14000, apagar);
         timer.enable(wd_timer_id);
       }
-      if(altura==1)
+      if(altura == 1)
       {
-        if(altura_pp==1 && intervalo < 7000)
+        if(altura_pp == 1 && intervalo < 7000)
           intervalo=intervalo+7000;
         time_on=7000-intervalo;
         if(time_on > 0)
@@ -234,9 +234,9 @@ void inicio_altura()
         }
         if(time_on < 0)
         {
-          time_on=-1*time_on;
-          IN_3=!IN_3;
-          IN_4=!IN_4;
+          time_on= -1 * time_on;
+          IN_3=! IN_3;
+          IN_4=! IN_4;
           digitalWrite (IN3, IN_3);
           digitalWrite (IN4, IN_4); 
           wd_timer_id=timer.setTimeout(time_on, apagar);
@@ -244,7 +244,7 @@ void inicio_altura()
         }
       }      
     }
-    altura_pp=altura_p;
+    altura_pp = altura_p;
     altura_p = altura;    
   }
 }
