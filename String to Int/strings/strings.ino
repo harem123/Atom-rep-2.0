@@ -15,6 +15,7 @@ void setup()
   pinMode(Led_1, OUTPUT); 
   digitalWrite(En_WrRd_RS485, LOW); 
   digitalWrite(Led_1, LOW);
+  Serial.println("IN");
  
 } 
  
