@@ -48,7 +48,7 @@ void loop()
       digitalWrite(En_WrRd_RS485, LOW); // pongo pin en LOW para habilitar RS 485
       Serial.print(BufferIn);
       
-      if ((BufferIn.indexOf('C')) >= 0) // leo el identificador de la placa sensores
+      if ((BufferIn.indexOf('S')) >= 0) // leo el identificador de la placa sensores
       {
           if (BufferIn.indexOf('1' ) >= 0) // leo el comando de inicio de sensado
           {
