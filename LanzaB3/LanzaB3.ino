@@ -93,15 +93,15 @@ void loop() {
 void f_velocidad()
 {
   switch (velocidad) {
-    case 0:
+    case 1:
       //do something when var equals 0
       analogWrite(10,80);
       break;
-    case 1:
+    case 2:
       //do something when var equals 1
       analogWrite(10,127);
       break;
-    case 2:
+    case 3:
       //do something when var equals 2
       analogWrite(10,254);
       break;
