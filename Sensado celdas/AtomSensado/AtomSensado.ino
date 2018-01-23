@@ -5,7 +5,7 @@ const int Led_1 =  13;
 const int Led_2 =  6; 
 const int Led_3 =  5;  
 // ++ pines de sensado my pins y pin de salida 
-int myPins[] = {7, 8,9};
+int myPins[] = {22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53};
 int sN=00;
 boolean flag;
 // ++++++++++++++++++++++++++++++
@@ -21,7 +21,7 @@ unsigned long previousSec;
 void setup() 
 { 
   //++ defino pines de entrada 
-  for(int j= 0 ; j <2; j++){
+  for(int j= 0 ; j <32; j++){
   pinMode(myPins[j],INPUT);}
 // +++
 
@@ -31,13 +31,10 @@ void setup()
   pinMode(En_WrRd_RS485, OUTPUT);
   
   pinMode(Led_1, OUTPUT);
-  pinMode(Led_2, OUTPUT);
-  pinMode(Led_3, OUTPUT);
+  
   
   digitalWrite(En_WrRd_RS485, LOW); 
-  digitalWrite(Led_1, LOW);
-  digitalWrite(Led_2, LOW);
-  digitalWrite(Led_3, LOW); 
+  
 } 
  
 void loop() 
@@ -54,23 +51,24 @@ void loop()
           {
             flag = true;                    // permito ingresar al while 
             Serial.println("OK");
-            delay(100);
+            delay(50);
             currentSec = millis();
             previousSec = currentSec; // inicio temporizadores
             while(flag == true && (currentSec - previousSec) < 5000)
             {  
 
-              digitalWrite(Led_2, HIGH);
-              for(int i = 0; i<3; i++)   // ciclo de 5 ms para 32 celdas 
+              digitalWrite(Led_1, HIGH);
+              for(int i = 0; i<31; i++)   // ciclo de 5 ms para 32 celdas 
               {
                 if (digitalRead(myPins[i]) == HIGH)
                 {
                   sN = i;
-                  digitalWrite(Led_2, LOW);
-                  Serial.print("C");
+                  digitalWrite(Led_1, LOW);
+                  Serial.print("L");
+                  Serial.print("T");
                   Serial.print(sN);
-                  Serial.print("#");  
-                  i=4;// cambia el estado para salir rapido del for 
+                  Serial.print("Z");  
+                  i=31;// cambia el estado para salir rapido del for 
                   flag = false;
                 }
               }
